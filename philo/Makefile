@@ -1,7 +1,7 @@
 
-SRCS			= $(addprefix srcs/, check_input.c error.c main.c)
+SRCS			= $(addprefix srcs/, check_input.c error.c main.c philo.c fork.c)
 
-HEADERS			= $(addprefix headers/, check_input.h error.h struct.h)
+HEADERS			= $(addprefix headers/, check_input.h error.h struct.h philo.h fork.h)
 
 OBJS			= ${SRCS:.c=.o}
 
