@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/04 16:00:23 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/05/04 21:56:36 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/05/05 10:04:46 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "fork.h"
+#include "error.h"
 
-# include <pthread.h>
-
-typedef struct	s_core
+int	ft_init_forks(pthread_mutex_t *forks, int n_fork)
 {
-	int	n_philo;
-	int	t_die;
-	int	t_eat;
-	int t_sleep;
-	int	n_eat;
-}	t_core;
+	int	i;
 
-typedef struct	s_philo
-{
-	int				position;
-	struct s_core	*core;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-}	t_philo;
-
-#endif
+	i = 0;
+	while (i < n_fork)
+	{
+		if (pthread_mutex_init(forks + i, NULL) != 0)
+			return (ft_puterror("Failed init muitex\n", 0));
+		i++;
+	}
+	return (1);
+}

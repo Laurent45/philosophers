@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:32:36 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/04 14:59:21 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/05 10:02:34 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	ft_strlen(const char *str)
 	return (i);
 }
 
-int	ft_puterror(const char *message)
+int	ft_puterror(const char *message, int ret)
 {
 	write(2, message, ft_strlen(message));
-	return (-1);
+	return (ret);
 }

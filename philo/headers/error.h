@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:29:03 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/04 14:48:27 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/05 10:02:11 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 /**
  *
  */
-int	ft_puterror(const char *message);
+int	ft_puterror(const char *message, int ret);
 
 #endif

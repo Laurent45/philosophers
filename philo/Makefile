@@ -15,10 +15,9 @@ CFLAGS			= -Wall -Wextra -Werror
 	${CC} ${CFLAGS} -Iheaders/ -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS}
-	${CC} ${CFLAGS} -o ${NAME} ${OBJS}
+	${CC} ${CFLAGS} -pthread -o ${NAME} ${OBJS}
 
 all: ${NAME}
-
 
 clean:
 	${RM} ${OBJS}
@@ -27,5 +26,8 @@ fclean: clean
 	${RM} ${NAME}
 
 re: fclean all
+
+debug: CFLAGS += -g
+debug: all
 
 .PHONY: all clean fclean re

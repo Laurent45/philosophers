@@ -6,11 +6,9 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:40:38 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/04 15:40:51 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:22:32 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 #include "check_input.h"
 
@@ -35,7 +33,6 @@ static long	ft_atol(const char *str)
 	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + (str[i] - '0');
-		printf("res = %ld\n", res);
 		i++;
 	}
 	return (res);
@@ -46,7 +43,6 @@ static int	ft_cmp_intmax(const char *s)
 	long	atol;
 
 	atol = ft_atol(s);
-	printf("atol = %ld\n", atol);
 	if (atol > INT_MAX)
 			return (0);
 	return (1);
