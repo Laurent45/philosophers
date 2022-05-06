@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 16:03:13 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 17:50:21 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/05/06 17:53:09 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/05/06 17:53:50 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "time.h"
 
-# include "struct.h"
+long	ft_get_time_ms(struct timeval *start, struct timeval *end)
+{
+	long	s;
+	long	us;
 
-/**
- *
- */
-void	*ft_routine(void *args);
-
-#endif
+	s = end->tv_sec - start->tv_sec;
+	us = end->tv_usec - start->tv_usec;
+	return ((s * 100) + (us / 100));
+}

@@ -1,7 +1,9 @@
 
-SRCS			= $(addprefix srcs/, check_input.c error.c main.c philo.c fork.c)
+SRCS			= $(addprefix srcs/, check_input.c clear.c error.c init.c\
+				  philo.c time.c main.c)
 
-HEADERS			= $(addprefix headers/, check_input.h error.h struct.h philo.h fork.h)
+HEADERS			= $(addprefix headers/, check_input.h error.h struct.h philo.h\
+				  init.h clear.h time.h)
 
 OBJS			= ${SRCS:.c=.o}
 
@@ -23,11 +25,12 @@ clean:
 	${RM} ${OBJS}
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} philo_debug
 
 re: fclean all
 
-debug: CFLAGS += -g
-debug: all
+debug: CFLAGS	+= -g
+debug: NAME		 = philo_debug
+debug: re
 
 .PHONY: all clean fclean re

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   clear.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 16:03:13 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 17:50:21 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/05/06 17:17:01 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/05/06 18:18:09 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#ifndef CLEAR_H
+# define CLEAR_H
 
 # include "struct.h"
 
 /**
  *
  */
-void	*ft_routine(void *args);
+int		ft_destroy_forks(pthread_mutex_t *forks, int n_fork);
+
+/**
+ *
+ */
+void	ft_clear_core(t_core *core);
 
 #endif

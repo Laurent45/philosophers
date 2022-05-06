@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/04 16:00:23 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:52:11 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 
 typedef struct	s_core
 {
-	int	n_philo;
-	int	t_die;
-	int	t_eat;
-	int t_sleep;
-	int	n_eat;
+	int				n_philo;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				n_eat;
+	int				ready;
+	struct timeval	*start;
+	pthread_mutex_t	*m_print;
 }	t_core;
 
 typedef struct	s_philo
