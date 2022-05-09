@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:30:42 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 18:42:32 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/09 09:56:48 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,22 @@ int	main(int argc, char *argv[])
 	if (!ft_create_philos(&philos, &forks, &core))
 		return (ft_puterror("Failed while creating philo\n", -1));
 
-	gettimeofday(core.start, NULL);
 	//TEST
-	pthread_t	*ths;
-	ths = (pthread_t *) malloc(sizeof(pthread_t) * core.n_philo);
+	gettimeofday(core.start, NULL);
 	for (int i = 0; i < core.n_philo; i++)
 	{
-		if (pthread_create(ths + i, NULL, &ft_routine, philos + i) != 0)
+		if (pthread_create(&philos[i].thread, NULL, &ft_routine, philos + i) != 0)
 			return (ft_puterror("Failed created thread\n", -1));
 	}
 	core.ready = 1;
 	for (int i = 0; i < core.n_philo; i++)
 	{
-		if (pthread_join(ths[i], NULL) != 0)
+		if (pthread_join(philos[i].thread, NULL) != 0)
 			return (ft_puterror("Failed join thread\n", -1));
 	}
 	// END TEST
-	ft_destroy_forks(forks, core.n_philo);
+	ft_clear_forks(&forks, core.n_philo);
 	ft_clear_core(&core);	
-	free(forks);
 	free(philos);
-	free(ths);
 	return (0);
 }

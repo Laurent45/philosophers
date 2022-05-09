@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:54:09 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 18:29:56 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:09:14 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 /**
  *
  */
-long	ft_get_time_ms(struct timeval *start, struct timeval *end);
+long	ft_time(struct timeval *start);
 
 #endif

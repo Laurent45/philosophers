@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:17:01 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 18:18:09 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/07 16:24:55 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /**
  *
  */
-int		ft_destroy_forks(pthread_mutex_t *forks, int n_fork);
+void	ft_clear_forks(pthread_mutex_t **forks, int n_mtx_init);
 
 /**
  *

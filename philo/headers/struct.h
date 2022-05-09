@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 17:52:11 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:56:02 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_core
 
 typedef struct	s_philo
 {
+	pthread_t		thread;
 	int				position;
 	struct s_core	*core;
 	pthread_mutex_t	*l_fork;

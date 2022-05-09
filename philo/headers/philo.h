@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 16:03:13 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 17:50:21 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/07 21:42:55 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
  *
  */
 void	*ft_routine(void *args);
+void	*ft_chrono(void *args);
 
 #endif

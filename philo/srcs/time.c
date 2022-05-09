@@ -6,18 +6,30 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:09 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 17:53:50 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:08:51 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "time.h"
+#include <sys/time.h>
+#include <stddef.h>
 
-long	ft_get_time_ms(struct timeval *start, struct timeval *end)
+long	ft_time(struct timeval *start)
 {
-	long	s;
-	long	us;
+	struct timeval	end;
+	long			s;
+	long			us;
+	int				r;
 
-	s = end->tv_sec - start->tv_sec;
-	us = end->tv_usec - start->tv_usec;
-	return ((s * 100) + (us / 100));
+	gettimeofday(&end, NULL);
+	r = 0;
+	if (end.tv_usec < start->tv_usec)
+	{
+		us = (end.tv_usec + (1000000 - start->tv_usec)) / 1000;
+		r = 1;
+	}
+	else
+		us = (end.tv_usec - start->tv_usec) / 1000;
+	s = ((end.tv_sec - start->tv_sec - r) * 1000);
+	return (s + us);
 }

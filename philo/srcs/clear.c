@@ -6,32 +6,33 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:11:57 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 18:34:20 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/07 16:23:17 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "clear.h"
+#include "error.h"
 #include <stdlib.h>
 
-int    ft_destroy_forks(pthread_mutex_t *forks, int n_fork)
+void	ft_clear_forks(pthread_mutex_t **forks, int n_mtx_init)
 {
-       int     i;
-       int     failed;
+       int	i;
 
        i = 0;
-       failed = 1;
-       while (i < n_fork)
+       while (i < n_mtx_init)
        {
-               if (pthread_mutex_destroy(forks + i) != 0)
-                       failed = 0;
-			   i++;
+			if (pthread_mutex_destroy(*forks + i) != 0)
+				ft_puterror("Failed to destroy mutex forks\n", 0);
+			i++;
        }
-       return (failed);
+	   free(*forks);
+	   *forks = NULL;
 }
 
 void	ft_clear_core(t_core *core)
 {
 	free(core->start);
-	pthread_mutex_destroy(core->m_print);
+	if (pthread_mutex_destroy(core->m_print) != 0)
+		ft_puterror("Failed to destoy mutex print\n", 0);
 	free(core->m_print);
 }
