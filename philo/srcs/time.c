@@ -6,12 +6,11 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:53:09 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/09 15:08:51 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/13 14:53:07 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "time.h"
-#include <sys/time.h>
 #include <stddef.h>
 
 long	ft_time(struct timeval *start)

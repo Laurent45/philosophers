@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:13:10 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 18:04:35 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:01:34 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /**
  *
  */
-int	ft_create_forks(pthread_mutex_t **forks, int n_fork);
+int	ft_create_forks(pthread_mutex_t **forks, int n_fork, t_core *core);
 
 /**
  *

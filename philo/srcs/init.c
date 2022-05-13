@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:13 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/09 15:01:33 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:53:42 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,22 @@
 #include "error.h"
 #include <stdlib.h>
 
-int	ft_create_forks(pthread_mutex_t **forks, int n_fork)
+int	ft_create_forks(pthread_mutex_t **forks, int n_fork, t_core *core)
 {
 	int	i;
 
 	*forks = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t) * n_fork);
 	if (!*forks)
+	{
+		ft_clear_core(core);
 		return (0);
+	}
 	i = 0;
 	while (i < n_fork)
 	{
 		if (pthread_mutex_init(*forks + i, NULL) != 0)
 		{
+			ft_clear_core(core);
 			ft_clear_forks(forks, i);
 			return (ft_puterror("Failed init mutex\n", 0));
 		}
@@ -55,7 +59,7 @@ int	ft_create_philos(t_philo **philos, pthread_mutex_t **forks, t_core *core)
 			(*philos)[i].l_fork = *forks + (core->n_philo - 1);
 		else
 			(*philos)[i].l_fork = *forks + (i - 1);
-		(*philos)[i].r_fork = *forks + i; 
+		(*philos)[i].r_fork = *forks + i;
 		i++;
 	}
 	return (1);

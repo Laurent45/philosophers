@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/09 14:56:02 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:37:10 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <pthread.h>
 
-typedef struct	s_core
+typedef struct s_core
 {
 	int				n_philo;
 	int				t_die;
@@ -27,7 +27,7 @@ typedef struct	s_core
 	pthread_mutex_t	*m_print;
 }	t_core;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		thread;
 	int				position;

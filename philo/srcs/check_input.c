@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:40:38 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/06 17:59:27 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:39:55 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_isdigit(char c)
 {
-	if (c >= '0' && c <='9')
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
@@ -22,7 +22,7 @@ static int	ft_isdigit(char c)
 static long	ft_atol(const char *str)
 {
 	long	res;
-	int				i;
+	int		i;
 
 	res = 0;
 	i = 0;
@@ -44,7 +44,7 @@ static int	ft_cmp_intmax(const char *s)
 
 	atol = ft_atol(s);
 	if (atol > INT_MAX)
-			return (0);
+		return (0);
 	return (1);
 }
 
@@ -93,7 +93,7 @@ int	ft_check_input(char *args[], t_core *core)
 			core->t_eat = (int) ft_atol(args[i]);
 		else if (i == 3)
 			core->t_sleep = (int) ft_atol(args[i]);
-		else 
+		else
 			core->n_eat = (int) ft_atol(args[i]);
 		i++;
 	}
