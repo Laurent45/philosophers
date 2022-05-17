@@ -1,9 +1,9 @@
 
 SRCS			= $(addprefix srcs/, check_input.c clear.c error.c init.c\
-				  philo.c time.c main.c)
+				  philo.c routine.c time.c main.c)
 
 HEADERS			= $(addprefix headers/, check_input.h error.h struct.h philo.h\
-				  init.h clear.h time.h)
+				  init.h clear.h time.h routine.h)
 
 OBJS			= ${SRCS:.c=.o}
 

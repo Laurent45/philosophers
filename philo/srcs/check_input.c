@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:40:38 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/13 15:39:55 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:51:24 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,14 @@ static int	ft_isinteger_pos(const char *s)
 		return (ft_cmp_intmax(s));
 }
 
-int	ft_check_input(char *args[], t_core *core)
+int	ft_check_input(char *args[], int n_args, t_core *core)
 {
 	int	i;
 
 	i = 0;
-	while (i < 5)
+	if (n_args == 4)
+		core->n_eat = -1;
+	while (i < n_args)
 	{
 		if (!ft_isinteger_pos(args[i]))
 			return (0);

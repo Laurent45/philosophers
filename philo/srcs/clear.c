@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:11:57 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/13 15:41:58 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:45:56 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ void	ft_clear_forks(pthread_mutex_t **forks, int n_mtx_init)
 
 void	ft_clear_core(t_core *core)
 {
-	free(core->start);
+	if (pthread_mutex_destroy(core->m_died) != 0)
+		ft_puterror("Failed to destoy mutex died\n", 0);
+	free(core->m_died);
 	if (pthread_mutex_destroy(core->m_print) != 0)
-		ft_puterror("Failed to destoy mutex print\n", 0);
+		ft_puterror("Failed to destoy mutex died\n", 0);
 	free(core->m_print);
+	free(core->start);
 }

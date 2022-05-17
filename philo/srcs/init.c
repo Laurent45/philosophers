@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:13 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/13 15:53:42 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:46:04 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_create_philos(t_philo **philos, pthread_mutex_t **forks, t_core *core)
 	i = 0;
 	while (i < core->n_philo)
 	{
-		(*philos)[i].position = i + 1;
+		(*philos)[i].id = i + 1;
 		(*philos)[i].core = core;
 		if (i == 0)
 			(*philos)[i].l_fork = *forks + (core->n_philo - 1);
@@ -65,23 +65,37 @@ int	ft_create_philos(t_philo **philos, pthread_mutex_t **forks, t_core *core)
 	return (1);
 }
 
+static	int	ft_free_core(t_core *core)
+{
+	if (core->start)
+		free(core->start);
+	if (core->m_died)
+		free(core->m_died);
+	if (core->m_print)
+		free(core->m_print);
+	return (0);
+}
+
 int	ft_init_core(t_core *core)
 {
 	core->ready = 0;
+	core->died = 0;
 	core->start = (struct timeval *) malloc(sizeof(struct timeval));
-	if (!core->start)
-		return (0);
 	core->m_print = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
-	if (!core->m_print)
-	{
-		free(core->start);
-		return (0);
-	}
+	core->m_died = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
+	if (!core->start || !core->m_print || !core->m_died)
+		return (ft_free_core(core));
 	if (pthread_mutex_init(core->m_print, NULL) != 0)
 	{
-		free(core->start);
-		free(core->m_print);
+		ft_free_core(core);
 		return (ft_puterror("Failed to init mutex print\n", 0));
+	}
+	if (pthread_mutex_init(core->m_died, NULL) != 0)
+	{
+		if (pthread_mutex_destroy(core->m_print) != 0)
+			ft_puterror("Failed to destroy mutex print while init core\n", 0);
+		ft_free_core(core);
+		return (ft_puterror("Failed to init mutex died\n", 0));
 	}
 	return (1);
 }

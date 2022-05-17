@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:30:42 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/13 16:05:39 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:21:26 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	main(int argc, char *argv[])
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 
-	if (argc != 6)
-		return (ft_puterror("Usage: you should put 5 args", -1));
-	if (!ft_check_input(argv + 1, &core))
+	if (argc != 6 && argc != 5)
+		return (ft_puterror("Usage: you should put 4 or 5 args\n", -1));
+	if (!ft_check_input(argv + 1, argc - 1, &core))
 		return (ft_puterror("Args must be interger positive value\n", -1));
 	if (!ft_init_core(&core))
 		return (ft_puterror("Failed while creating core\n", -1));
