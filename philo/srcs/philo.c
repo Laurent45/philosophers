@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:45:48 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/17 16:24:04 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:53:34 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "routine.h"
 #include <unistd.h>
 
-void	*ft_routine(void *args)
+void	*ft_philo_life(void *args)
 {
 	t_philo			*p;
 	int				eat;

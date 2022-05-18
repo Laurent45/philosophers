@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:54:09 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/13 14:53:51 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:58:21 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <sys/time.h>
 
 /**
- *
+ * It returns the difference between start and current time on ms.
  */
 long	ft_time(struct timeval *start);
 

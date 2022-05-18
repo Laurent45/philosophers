@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:30:42 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/17 11:21:26 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:54:04 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ft_running(t_core *core, t_philo *phs)
 	i = 0;
 	while (i < core->n_philo)
 	{
-		if (pthread_create(&phs[i].thread, NULL, &ft_routine, phs + i) != 0)
+		if (pthread_create(&phs[i].thread, NULL, &ft_philo_life, phs + i) != 0)
 		{
 			ft_puterror("Failed created thread\n", 0);
 			return ;

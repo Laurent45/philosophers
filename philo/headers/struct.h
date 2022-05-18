@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/17 16:18:14 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/05/18 16:30:18 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_core
 	int				died;
 	struct timeval	*start;
 	pthread_mutex_t	*m_print;
-	pthread_mutex_t	*m_died;
 }	t_core;
 
 typedef struct s_philo
