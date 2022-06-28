@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   semaphore_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/06/28 10:36:15 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/06/27 22:53:53 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/06/28 09:51:13 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef SEMAPHORE_BONUS_H
+# define SEMAPHORE_BONUS_H
 
-# include <pthread.h>
+# include "struct_bonus.h"
 
-typedef struct s_core
-{
-	int				n_philo;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
-	int				n_eat;
-	int				ready;
-	int				died;
-	struct timeval	start;
-	pthread_mutex_t	*m_print;
-}	t_core;
+/**
+ *
+ */
+int		ft_close_sems(t_core *core, int ret);
 
-typedef struct s_philo
-{
-	pthread_t		thread;
-	int				id;
-	struct s_core	*core;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-}	t_philo;
+/**
+ *
+ */
+int		ft_init_sems(t_core *core);
 
 #endif

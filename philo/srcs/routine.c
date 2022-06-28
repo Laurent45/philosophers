@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:02:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/18 16:23:34 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:39:10 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_print_state(t_philo *philo, const char *state, int died)
 	long	time;
 
 	pthread_mutex_lock(philo->core->m_print);
-	time = ft_time(philo->core->start);
+	time = ft_time(&philo->core->start);
 	if (philo->core->died)
 	{
 		pthread_mutex_unlock(philo->core->m_print);
@@ -38,7 +38,7 @@ static int	ft_isdead(t_philo *philo, int eat, struct timeval *time)
 
 	t = time;
 	if (eat == 0)
-		t = philo->core->start;
+		t = &philo->core->start;
 	if (ft_time(t) >= philo->core->t_die)
 		return (DIED);
 	return (ALIVE);
@@ -74,16 +74,16 @@ int	ft_eating(t_philo *philo, int eat, struct timeval *start_eat)
 	}
 	while (ft_time(start_eat) < philo->core->t_eat)
 	{
-		if (ft_isdead(philo, eat, start_eat) == DIED)
+		if (ft_isdead(philo, eat, start_eat) == DIED || philo->core->died)
 		{
 			ft_print_state(philo, "died", DIED);
-			pthread_mutex_unlock(philo->r_fork);
 			pthread_mutex_unlock(philo->l_fork);
+			pthread_mutex_unlock(philo->r_fork);
 			return (DIED);
 		}
 	}
-	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_unlock(philo->l_fork);
+	pthread_mutex_unlock(philo->r_fork);
 	return (ALIVE);
 }
 
@@ -93,7 +93,7 @@ int	ft_sleeping(t_philo	*philo, int eat, struct timeval *start_eat)
 		return (DIED);
 	while (ft_time(start_eat) < (philo->core->t_eat + philo->core->t_sleep))
 	{
-		if (ft_isdead(philo, eat, start_eat) == DIED)
+		if (ft_isdead(philo, eat, start_eat) == DIED || philo->core->died)
 		{
 			ft_print_state(philo, "died", DIED);
 			return (DIED);

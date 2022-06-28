@@ -25,12 +25,8 @@ clean:
 	${RM} ${OBJS}
 
 fclean: clean
-	${RM} ${NAME} philo_debug
+	${RM} ${NAME}
 
 re: fclean all
-
-debug: CFLAGS	+= -g
-debug: NAME		 = philo_debug
-debug: re
 
 .PHONY: all clean fclean re

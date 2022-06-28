@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   struct_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/06/28 10:36:15 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/06/28 09:49:06 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef STRUCT_BONUS_H
+# define STRUCT_BONUS_H
 
-# include <pthread.h>
+# include <semaphore.h>
 
 typedef struct s_core
 {
@@ -22,19 +22,12 @@ typedef struct s_core
 	int				t_eat;
 	int				t_sleep;
 	int				n_eat;
-	int				ready;
-	int				died;
-	struct timeval	start;
-	pthread_mutex_t	*m_print;
-}	t_core;
-
-typedef struct s_philo
-{
-	pthread_t		thread;
 	int				id;
-	struct s_core	*core;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-}	t_philo;
+	struct timeval	start;
+	sem_t			*sem_forks;
+	sem_t			*sem_sync;
+	sem_t			*sem_died;
+	sem_t			*sem_print;
+}	t_core;
 
 #endif

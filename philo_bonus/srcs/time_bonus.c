@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   time_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/06/28 10:36:15 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/05/06 17:53:09 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/06/28 09:40:19 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "time_bonus.h"
+#include <stddef.h>
 
-# include <pthread.h>
-
-typedef struct s_core
+long	ft_time(struct timeval *start)
 {
-	int				n_philo;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
-	int				n_eat;
-	int				ready;
-	int				died;
-	struct timeval	start;
-	pthread_mutex_t	*m_print;
-}	t_core;
+	struct timeval	end;
+	long			s;
+	long			us;
+	int				r;
 
-typedef struct s_philo
-{
-	pthread_t		thread;
-	int				id;
-	struct s_core	*core;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-}	t_philo;
-
-#endif
+	gettimeofday(&end, NULL);
+	r = 0;
+	if (end.tv_usec < start->tv_usec)
+	{
+		us = (end.tv_usec + (1000000 - start->tv_usec)) / 1000;
+		r = 1;
+	}
+	else
+		us = (end.tv_usec - start->tv_usec) / 1000;
+	s = ((end.tv_sec - start->tv_sec - r) * 1000);
+	return (s + us);
+}

@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 13:30:42 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/18 16:54:04 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:39:45 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 		return (ft_puterror("Failed while creting forks\n", -1));
 	if (!ft_create_philos(&philos, &forks, &core))
 		return (ft_puterror("Failed while creating philo\n", -1));
-	gettimeofday(core.start, NULL);
+	gettimeofday(&core.start, NULL);
 	ft_running(&core, philos);
 	ft_clear_forks(&forks, core.n_philo);
 	ft_clear_core(&core);

@@ -6,7 +6,7 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 17:07:13 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/05/18 16:51:49 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:37:09 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int	ft_create_philos(t_philo **philos, pthread_mutex_t **forks, t_core *core)
 
 static	int	ft_free_core(t_core *core)
 {
-	if (core->start)
-		free(core->start);
 	if (core->m_print)
 		free(core->m_print);
 	return (0);
@@ -78,9 +76,8 @@ int	ft_init_core(t_core *core)
 {
 	core->ready = 0;
 	core->died = 0;
-	core->start = (struct timeval *) malloc(sizeof(struct timeval));
 	core->m_print = (pthread_mutex_t *) malloc(sizeof(pthread_mutex_t));
-	if (!core->start || !core->m_print)
+	if (!core->m_print)
 		return (ft_free_core(core));
 	if (pthread_mutex_init(core->m_print, NULL) != 0)
 	{

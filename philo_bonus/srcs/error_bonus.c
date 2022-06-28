@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear.c                                            :+:      :+:    :+:   */
+/*   error_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 17:11:57 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/06/28 10:37:23 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/05/04 14:32:36 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/05/05 10:02:34 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "clear.h"
-#include "error.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_clear_forks(pthread_mutex_t **forks, int n_mtx_init)
+static int	ft_strlen(const char *str)
 {
 	int	i;
 
 	i = 0;
-	while (i < n_mtx_init)
-	{
-		if (pthread_mutex_destroy(*forks + i) != 0)
-			ft_puterror("Failed to destroy mutex forks\n", 0);
+	while (str[i])
 		i++;
-	}
-	free(*forks);
-	*forks = NULL;
+	return (i);
 }
 
-void	ft_clear_core(t_core *core)
+int	ft_puterror(const char *message, int ret)
 {
-	if (pthread_mutex_destroy(core->m_print) != 0)
-		ft_puterror("Failed to destoy mutex died\n", 0);
-	free(core->m_print);
+	write(2, message, ft_strlen(message));
+	return (ret);
 }

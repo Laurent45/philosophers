@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   check_input_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 14:17:00 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/06/28 10:36:15 by lfrederi         ###   ########.fr       */
+/*   Created: 2022/05/04 13:40:13 by lfrederi          #+#    #+#             */
+/*   Updated: 2022/06/28 09:46:04 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef CHECK_INPUT_BONUS_H
+# define CHECK_INPUT_BONUS_H
 
-# include <pthread.h>
+# include "struct_bonus.h"
 
-typedef struct s_core
-{
-	int				n_philo;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
-	int				n_eat;
-	int				ready;
-	int				died;
-	struct timeval	start;
-	pthread_mutex_t	*m_print;
-}	t_core;
+# define MAX_DIGIT_INT	10
+# define INT_MAX		2147483647
 
-typedef struct s_philo
-{
-	pthread_t		thread;
-	int				id;
-	struct s_core	*core;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*r_fork;
-}	t_philo;
+/**
+ * It checks if all args are positif integer.
+ * If true each args are parse to integer in attributes of core and return 1.
+ * Otherwise return 0.
+ */
+int	ft_check_input(char *args[], int n_args, t_core *core);
 
 #endif
