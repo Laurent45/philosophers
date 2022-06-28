@@ -6,12 +6,13 @@
 /*   By: lfrederi <lfrederi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:02:39 by lfrederi          #+#    #+#             */
-/*   Updated: 2022/06/28 10:39:10 by lfrederi         ###   ########.fr       */
+/*   Updated: 2022/06/28 20:04:30 by lfrederi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "routine.h"
 #include "time.h"
+#include <unistd.h>
 #include <stdio.h>
 
 static int	ft_print_state(t_philo *philo, const char *state, int died)
@@ -101,5 +102,6 @@ int	ft_sleeping(t_philo	*philo, int eat, struct timeval *start_eat)
 	}
 	if (ft_print_state(philo, "is thinking", ALIVE) == DIED)
 		return (DIED);
+	usleep(50000);
 	return (ALIVE);
 }
